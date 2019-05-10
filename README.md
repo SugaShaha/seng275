@@ -1,9 +1,5 @@
 # SENG 275 Te(s)tris Game
 
-[Get Latest JAR](https://gitlab.csc.uvic.ca/courses/201805/seng275/tetris/-/jobs/artifacts/master/browse/build/libs?job=publish)  
-[Browse Latest Build Bundle](https://gitlab.csc.uvic.ca/courses/201805/seng275/tetris/-/jobs/artifacts/master/browse?job=publish)  
-[Download Latest Build Bundle](https://gitlab.csc.uvic.ca/courses/201805/seng275/tetris/-/jobs/artifacts/master/download?job=publish)
-
 Welcome to SENG 275. We hope you'll have a wonderful time in this course exploring some essential tools often found in industry.
 
 To start, here we have a Tetris game build in Java for you to test, continue to build, and integrate with other services.
@@ -13,8 +9,6 @@ To start, here we have a Tetris game build in Java for you to test, continue to 
 There are various commands to help you develop your Testris game.
 
 ### Building
-
-Built jars can be found under `build/libs/`.
 
 To create a jar SNAPSHOT, you can run:  
 `./gradlew build` or, `./gradlew buildJar` (they are equivalent)
