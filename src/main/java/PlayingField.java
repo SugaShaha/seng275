@@ -118,9 +118,10 @@ public class PlayingField implements MoveListener
 
         for ( int i =0;i < Piece.PIECE_SIZE; i++ ) {
             for ( int j=0; j<Piece.PIECE_SIZE; j++ ) {
-                if ( (background[currentPiece.getX() + i][currentPiece.getY() + j] != Piece.PieceType.PIECE_NONE) &&
+                if (currentPiece.getX() + i < 0 || currentPiece.getY() + j < 0 || (background[currentPiece.getX() + i][currentPiece.getY() + j] != Piece.PieceType.PIECE_NONE) &&
                         (currentPiece.isCovering(i,j) ) )  {
-                    itFits = false;
+					//Optimised to remove unnecessary iterations.
+                    return false;
                 }
             }
         }
