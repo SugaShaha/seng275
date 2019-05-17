@@ -103,7 +103,7 @@ class PieceTest {
         p.moveDown(); 
         p.moveDown(); 
         // 4 + 3 = 7
-        assertEquals (p.getY(), 6);
+        assertEquals (p.getY(), 7);
     }
 
     @Test
