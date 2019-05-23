@@ -1,0 +1,16 @@
+https://gitlab.csc.uvic.ca/courses/2019051/SENG275/assignments/ishaha/tetris
+V00883615, Isaac Shaha
+V00899304, Jigyasa Chaudhary
+V00894734, Victor Sun
+
+1: The unit tests for moveRight, moveLeft, moveUp and moveDown only use a single piece type: IPiece. Given that there are six other pieces, are the existing tests sufficient?  Why or why not?
+
+The tests are sufficient because the stated functions only involve translation of the pieces and therefore the shape and rotation of the pieces are not relevant, as the shape and rotation are maintained for all of the pieces.
+
+2: Decide if you are going to test all seven pieces in rotateRight, rotateLeft and isCovering.  Document the reasons for your decisions, including the risks of the approach you took.
+
+For rotateLeft we tested all 7 pieces because they each have a unique geometry that could lead to a new defect; such as the I-piece clipping through the wall or the O-piece's rotation value not actually changing.
+For rotateRight, we only tested the I-Piece since we figured that every asymmetric piece has a "mirrored" version and we believe that we would have found a defect in the mirrored version during the rotateLeft tests.
+For isCovering, we tested all 7 pieces because they each have a unique geometry and we needed to verify that each shape covered the right coordinates.
+
+3: 

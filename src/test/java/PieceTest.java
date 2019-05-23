@@ -109,7 +109,31 @@ class PieceTest {
 
     @Test
     void rotateLeft() {
-        Piece p = new ZPiece();
+        Piece p = new IPiece();
+        p.rotateLeft();
+        assertEquals(p.getRotation(), 3);
+
+        p = new JPiece();
+        p.rotateLeft();
+        assertEquals(p.getRotation(), 3);
+
+        p = new LPiece();
+        p.rotateLeft();
+        assertEquals(p.getRotation(), 3);
+
+        p = new OPiece();
+        p.rotateLeft();
+        assertEquals(p.getRotation(), 0);
+
+        p = new SPiece();
+        p.rotateLeft();
+        assertEquals(p.getRotation(), 3);
+
+        p = new ZPiece();
+        p.rotateLeft();
+        assertEquals(p.getRotation(), 3);
+
+        p = new TPiece();
         p.rotateLeft();
         assertEquals(p.getRotation(), 3);
     }
@@ -125,38 +149,43 @@ class PieceTest {
     void isCovering() {
         Piece p = new IPiece();
         for (int i = 0; i < 4; i++){
-            assertEquals(p.isCovering(i, 1), true);
+            assertTrue(p.isCovering(i, 1));
         }
-        p.rotateRight();
-        for (int i = 0; i < 4; i++){
-            assertEquals(p.isCovering(2, i), true);
-        }
+
+        p = new JPiece();
+        assertTrue(p.isCovering(0, 0));
+        assertTrue(p.isCovering(0, 1));
+        assertTrue(p.isCovering(1, 1));
+        assertTrue(p.isCovering(2, 1));
+
+        p = new LPiece();
+        assertTrue(p.isCovering(0, 1));
+        assertTrue(p.isCovering(1, 1));
+        assertTrue(p.isCovering(2, 1));
+        assertTrue(p.isCovering(2, 0));
+
+        p = new OPiece();
+        assertTrue(p.isCovering(1, 0));
+        assertTrue(p.isCovering(1, 1));
+        assertTrue(p.isCovering(2, 1));
+        assertTrue(p.isCovering(2, 0));
+
         p = new SPiece();
-        assertEquals(p.isCovering(0, 1), true);
-        assertEquals(p.isCovering(1, 1), true);
-        assertEquals(p.isCovering(1, 0), true);
-        assertEquals(p.isCovering(2, 0), true);
-    }
+        assertTrue(p.isCovering(0, 1));
+        assertTrue(p.isCovering(1, 1));
+        assertTrue(p.isCovering(1, 0));
+        assertTrue(p.isCovering(2, 0));
 
-    @Test
-    void A1PieceTest() {
-        String APIURL = "http://seng275.csc.uvic.ca:8080/tetris/games";
-        PlayingField pf = new PlayingField(new IPieceFactory(), new RESTAPIResultCollector("auth.txt", APIURL));
-        Piece p = new IPiece();
-        pf.nextMove(Move.rotateRight);
-        for (int i = 0; i < 10; i++){
-            pf.nextMove(Move.moveLeft);
-        }
-        assertTrue(pf.getCurrentPiece().getX() >= -1);
-    }
+        p = new ZPiece();
+        assertTrue(p.isCovering(0, 0));
+        assertTrue(p.isCovering(1, 0));
+        assertTrue(p.isCovering(1, 1));
+        assertTrue(p.isCovering(2, 1));
 
-    @Test
-    void A1ScoringTest() {
-        String APIURL = "http://seng275.csc.uvic.ca:8080/tetris/games";
-        PlayingField pf = new PlayingField(new RESTPieceFactory(APIURL), new RESTAPIResultCollector("auth.txt", APIURL));
-        for (int i = 0; i < 22; i++){
-            pf.nextMove(Move.moveDown);
-        }
-        assertTrue(pf.getScore() > 0);
+        p = new TPiece();
+        assertTrue(p.isCovering(0, 1));
+        assertTrue(p.isCovering(1, 1));
+        assertTrue(p.isCovering(1, 0));
+        assertTrue(p.isCovering(2, 1));
     }
 }
