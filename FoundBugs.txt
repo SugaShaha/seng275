@@ -1,0 +1,8 @@
+
+
+Description:
+In JFramePlayer.java, lines 39 & 41 the s and w buttons are mapped to the wrong rotation.
+Present on:
+Commit 2
+Steps to Reproduce:
+Press s or w and watch it rotate the wrong way.

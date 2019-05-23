@@ -115,10 +115,13 @@ public class PlayingField implements MoveListener
     //
     private boolean	pieceFits () {
         boolean itFits = true;
+        System.out.println("X: " + currentPiece.getX());
 
         for ( int i =0;i < Piece.PIECE_SIZE; i++ ) {
             for ( int j=0; j<Piece.PIECE_SIZE; j++ ) {
-                if ( (background[currentPiece.getX() + i][currentPiece.getY() + j] != Piece.PieceType.PIECE_NONE) &&
+                /*Added "currentPiece.getX() + i < 0 ||" to the if statement
+                to stop index out of bounds on currentPiece.getX()+i*/
+                if (currentPiece.getX() + i < 0 || (background[currentPiece.getX() + i][currentPiece.getY() + j] != Piece.PieceType.PIECE_NONE) &&
                         (currentPiece.isCovering(i,j) ) )  {
                     itFits = false;
                 }
@@ -271,6 +274,9 @@ public class PlayingField implements MoveListener
         currentPiece.moveDown();
         if ( !pieceFits () ) {
             currentPiece.moveUp();
+        }
+        else{
+            score += 1;
         }
     }
 
