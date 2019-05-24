@@ -28,7 +28,7 @@ class PlayingFieldTest {
 	    PieceFactory factory = new IPieceFactory();
 	    PlayingField theField = new PlayingField(factory, new NullResultCollector(), 10, 20);
 	    
-	    assertTrue (theField.getWidth(), 10);
+	    assertEquals(theField.getWidth(), 10);
     }
 
     @Test
@@ -36,7 +36,7 @@ class PlayingFieldTest {
 	    PieceFactory factory = new IPieceFactory();
 	    PlayingField theField = new PlayingField(factory, new NullResultCollector(), 10, 20);
 	    
-	    assertTrue (theField.getWidth(), 20);
+	    assertEquals(theField.getHeight(), 20);
     }
 
     @Test
@@ -81,6 +81,14 @@ class PlayingFieldTest {
 
     @Test
     void rotateRight() {
+
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector());
+        int originalRotation = theField.getCurrentPiece().getRotation();
+        for (int i = 1; i <= 4; i++){
+            theField.nextMove(Move.rotateRight);
+            assertTrue(theField.getCurrentPiece().getRotation() == (originalRotation+i) % 4);
+        }
     }
 
     @Test
