@@ -76,10 +76,26 @@ class PlayingFieldTest {
 
     @Test
     void moveLeft() {
+
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector());
+        int originalX = theField.getCurrentPiece().getX();
+        for (int i = 1; i <= 3; i++){
+            theField.nextMove(Move.moveLeft);
+            assertTrue(theField.getCurrentPiece().getX() == originalX - i);
+        }
     }
 
     @Test
     void moveRight() {
+
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector());
+        int originalX = theField.getCurrentPiece().getX();
+        for (int i = 1; i <= 3; i++){
+            theField.nextMove(Move.moveRight);
+            assertTrue(theField.getCurrentPiece().getX() == originalX + i);
+        }
     }
 
     @Test
