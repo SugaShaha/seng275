@@ -126,7 +126,6 @@ class PlayingFieldTest {
 			theField.timeout();
 		}
 		assertTrue(theField.timeout());
-	
     }
 
     @Test
