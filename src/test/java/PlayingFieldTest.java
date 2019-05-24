@@ -12,6 +12,25 @@ class PlayingFieldTest {
             return 0;
         }
     }
+	private class IJPieceFactory implements PieceFactory {
+        private int count = 1;
+		
+		public Piece createPiece() {
+			if(count%2 == 0){
+				count++;
+				return new JPiece();
+			}
+			else{
+				count++;
+				return new IPiece();
+			}
+			
+        }
+        public int   gameId() {
+            return 0;
+        }
+    }
+
 	private class NullResultCollector implements ResultCollector {
 		public boolean submitGameResult (int gameId, int score, int lineCount) {
 			return true;
@@ -69,6 +88,22 @@ class PlayingFieldTest {
 
     @Test
     void timeout() {
+		PieceFactory factory = new IJPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector());
+		
+		for(int i = 1; i<=20; i++){
+			theField.moveDown();
+		}
+		assertTrue(theField.getNextPiece() instanceof JPiece);
+		
+		for(int i = 1; i < 20; i++){
+			for(int j = 1; j <= 20; j++){
+				theField.moveDown();
+			}
+			theField.timeout();
+		}
+		assertTrue(theField.timeout());
+	
     }
 
     @Test
