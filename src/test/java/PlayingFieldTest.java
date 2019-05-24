@@ -73,6 +73,15 @@ class PlayingFieldTest {
 
     @Test
     void moveDown() {
+
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector());
+
+        int initialY = theField.getCurrentPiece().getY();
+        for (int i = 1; i <= 20; i++){
+            theField.nextMove(Move.moveDown);
+            assertEquals(initialY+i, theField.getCurrentPiece().getY());
+        }
     }
 
     @Test
