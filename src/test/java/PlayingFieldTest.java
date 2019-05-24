@@ -80,13 +80,14 @@ class PlayingFieldTest {
 
         PieceFactory factory = new IPieceFactory();
         PlayingField theField = new PlayingField(factory, new NullResultCollector());
-        int originalRotation = theField.getCurrentPiece().getRotation();
-        for (int i = 1; i <= 4; i++){
-            theField.nextMove(Move.rotateLeft);
-            assertEquals(theField.getCurrentPiece().getRotation(),
-            originalRotation-i >= 0 ? (originalRotation-i) % 4 : originalRotation-i+4);
-        }
 
+        for (int i = 0; i < 4; i++){
+            assertTrue(theField.getCurrentPiece().isCovering(i, 1));
+        }
+        theField.nextMove(Move.rotateLeft);
+        for (int i = 0; i < 4; i++){
+            assertTrue(theField.getCurrentPiece().isCovering(2, i));
+        }
     }
 
     @Test
@@ -94,10 +95,13 @@ class PlayingFieldTest {
 
         PieceFactory factory = new IPieceFactory();
         PlayingField theField = new PlayingField(factory, new NullResultCollector());
-        int originalRotation = theField.getCurrentPiece().getRotation();
-        for (int i = 1; i <= 4; i++){
-            theField.nextMove(Move.rotateRight);
-            assertTrue(theField.getCurrentPiece().getRotation() == (originalRotation+i) % 4);
+
+        for (int i = 0; i < 4; i++){
+            assertTrue(theField.getCurrentPiece().isCovering(i, 1));
+        }
+        theField.nextMove(Move.rotateRight);
+        for (int i = 0; i < 4; i++){
+            assertTrue(theField.getCurrentPiece().isCovering(1, i));
         }
     }
 
