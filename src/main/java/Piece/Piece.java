@@ -66,20 +66,16 @@ public abstract class Piece {
     }
 
     public void rotateLeft( ) {
-        pieceRotation--;
-        if ( pieceRotation < 0 ) {
-            pieceRotation = shape.length - 1;
-        }
-    }
-
-    public int getRotation(){
-        return pieceRotation;
-    }
-
-    public void rotateRight( ) {
         pieceRotation++;
         if ( pieceRotation >= shape.length ) {
             pieceRotation = 0;
+        }
+    }
+
+    public void rotateRight( ) {
+		pieceRotation--;
+        if ( pieceRotation < 0 ) {
+            pieceRotation = shape.length - 1;
         }
     }
 
