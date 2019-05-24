@@ -115,8 +115,6 @@ public class PlayingField implements MoveListener
     //
     private boolean	pieceFits () {
         boolean itFits = true;
-        System.out.println("X: " + currentPiece.getX());
-
         for ( int i =0;i < Piece.PIECE_SIZE; i++ ) {
             for ( int j=0; j<Piece.PIECE_SIZE; j++ ) {
                 /*Added "currentPiece.getX() + i < 0 ||" to the if statement

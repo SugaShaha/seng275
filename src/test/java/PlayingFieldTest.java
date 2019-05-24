@@ -62,7 +62,25 @@ class PlayingFieldTest {
     @Test
     void getLineCount() {
 
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector());
 
+        for (int i = 0; i < 4; i++){theField.nextMove(Move.moveLeft);}
+        for (int i = 0; i < 20; i++){theField.nextMove(Move.moveDown);}
+        theField.timeout();
+        for (int i = 0; i < 20; i++){theField.nextMove(Move.moveDown);}
+        theField.timeout();
+        getLineCountHelper(theField, 2);
+        getLineCountHelper(theField, 3);
+        getLineCountHelper(theField, 4);
+        assertEquals(theField.getLineCount(), 1);
+    }
+
+    void getLineCountHelper(PlayingField theField, int right){
+        theField.nextMove(Move.rotateLeft);
+        for (int i = 0; i < right; i++){theField.nextMove(Move.moveRight);}
+        for (int i = 0; i < 20; i++){theField.nextMove(Move.moveDown);}
+        theField.timeout();
     }
 
     @Test
