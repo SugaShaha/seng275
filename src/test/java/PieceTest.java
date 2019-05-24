@@ -111,81 +111,234 @@ class PieceTest {
     void rotateLeft() {
         Piece p = new IPiece();
         p.rotateLeft();
-        assertEquals(p.getRotation(), 3);
-
-        p = new JPiece();
-        p.rotateLeft();
-        assertEquals(p.getRotation(), 3);
-
-        p = new LPiece();
-        p.rotateLeft();
-        assertEquals(p.getRotation(), 3);
-
-        p = new OPiece();
-        p.rotateLeft();
-        assertEquals(p.getRotation(), 0);
-
-        p = new SPiece();
-        p.rotateLeft();
-        assertEquals(p.getRotation(), 3);
-
-        p = new ZPiece();
-        p.rotateLeft();
-        assertEquals(p.getRotation(), 3);
-
-        p = new TPiece();
-        p.rotateLeft();
-        assertEquals(p.getRotation(), 3);
+        assertTrue(p.isCovering(2,0));
+		assertTrue(p.isCovering(2,1));
+		assertTrue(p.isCovering(2,2));
+		assertTrue(p.isCovering(2,3));
+		p.rotateLeft();
+		assertTrue(p.isCovering(0,2));
+		assertTrue(p.isCovering(1,2));
+		assertTrue(p.isCovering(2,2));
+		assertTrue(p.isCovering(3,2));
+		p.rotateLeft();
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+		assertTrue(p.isCovering(1,3));
+		
+		p = new JPiece();
+		p.rotateLeft();
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+		assertTrue(p.isCovering(2,0));
+		p.rotateLeft();
+		assertTrue(p.isCovering(0,1));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(2,1));
+		assertTrue(p.isCovering(2,2));
+		p.rotateLeft();
+		assertTrue(p.isCovering(0,2));
+		assertTrue(p.isCovering(1,2));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,0));
+		
+		p = new LPiece();
+		p.rotateLeft();
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+		assertTrue(p.isCovering(2,2));
+		p.rotateLeft();
+		assertTrue(p.isCovering(0,2));
+		assertTrue(p.isCovering(0,1));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(2,1));
+		p.rotateLeft();
+		assertTrue(p.isCovering(0,0));
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+		
+		p = new OPiece();
+		p.rotateLeft();
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(2,1));
+		assertTrue(p.isCovering(2,0));
+		
+		p = new SPiece();
+		p.rotateLeft();
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(2,1));
+		assertTrue(p.isCovering(2,2));
+		p.rotateLeft();
+		assertTrue(p.isCovering(0,2));
+		assertTrue(p.isCovering(1,2));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(2,1));
+		p.rotateLeft();
+		assertTrue(p.isCovering(0,0));
+		assertTrue(p.isCovering(0,1));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+		
+		p = new ZPiece();
+		p.rotateLeft();
+		assertTrue(p.isCovering(2,0));
+		assertTrue(p.isCovering(2,1));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+		p.rotateLeft();
+		assertTrue(p.isCovering(0,1));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+		assertTrue(p.isCovering(2,2));
+		p.rotateLeft();
+		assertTrue(p.isCovering(0,1));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(0,1));
+		assertTrue(p.isCovering(0,2));
+		
+		p = new TPiece();
+		p.rotateLeft();
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+		assertTrue(p.isCovering(2,1));
+		p.rotateLeft();
+		assertTrue(p.isCovering(0,0));	
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(2,0));
+		assertTrue(p.isCovering(1,1));
+		p.rotateLeft();
+		assertTrue(p.isCovering(0,1));	
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+			
     }
 
     @Test
     void rotateRight() {
-        Piece p = new ZPiece();
+        Piece p = new IPiece();
         p.rotateRight();
-        assertEquals(p.getRotation(), 1);
+        assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+		assertTrue(p.isCovering(1,3));
+		
+		p = new JPiece();
+		p.rotateRight();
+		assertTrue(p.isCovering(0,2));
+		assertTrue(p.isCovering(1,2));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,0));
+		
+		p = new LPiece();
+		p.rotateRight();
+		assertTrue(p.isCovering(0,0));
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+		
+		p = new OPiece();
+		p.rotateRight();
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(2,1));
+		assertTrue(p.isCovering(2,0));
+		
+		p = new SPiece();
+		p.rotateRight();
+		assertTrue(p.isCovering(0,0));
+		assertTrue(p.isCovering(0,1));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+		
+		p = new ZPiece();
+		p.rotateRight();
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(0,1));
+		assertTrue(p.isCovering(0,2));
+		
+		p = new TPiece();
+		p.rotateRight();
+		assertTrue(p.isCovering(1,0));
+		assertTrue(p.isCovering(1,1));
+		assertTrue(p.isCovering(1,2));
+		assertTrue(p.isCovering(0,1));
     }
 
     @Test
     void isCovering() {
-        Piece p = new IPiece();
+		Piece p = new IPiece();
         for (int i = 0; i < 4; i++){
-            assertTrue(p.isCovering(i, 1));
+            assertFalse(p.isCovering(i, 0));
+			assertFalse(p.isCovering(i, 2));
+			assertFalse(p.isCovering(i, 3));
+        }
+		
+		p = new JPiece();
+		assertFalse(p.isCovering(1, 0));
+		assertFalse(p.isCovering(2, 0));
+		assertFalse(p.isCovering(3, 0));
+		assertFalse(p.isCovering(3, 1));
+		for (int i = 0; i < 4; i++){
+			assertFalse(p.isCovering(i, 2));
+			assertFalse(p.isCovering(i, 3));
+        }
+		
+		p = new LPiece();
+		assertFalse(p.isCovering(0, 0));
+		assertFalse(p.isCovering(1, 0));
+		assertFalse(p.isCovering(3, 0));
+		assertFalse(p.isCovering(3, 1));
+		for (int i = 0; i < 4; i++){
+			assertFalse(p.isCovering(i, 2));
+			assertFalse(p.isCovering(i, 3));
         }
 
-        p = new JPiece();
-        assertTrue(p.isCovering(0, 0));
-        assertTrue(p.isCovering(0, 1));
-        assertTrue(p.isCovering(1, 1));
-        assertTrue(p.isCovering(2, 1));
-
-        p = new LPiece();
-        assertTrue(p.isCovering(0, 1));
-        assertTrue(p.isCovering(1, 1));
-        assertTrue(p.isCovering(2, 1));
-        assertTrue(p.isCovering(2, 0));
-
         p = new OPiece();
-        assertTrue(p.isCovering(1, 0));
-        assertTrue(p.isCovering(1, 1));
-        assertTrue(p.isCovering(2, 1));
-        assertTrue(p.isCovering(2, 0));
-
-        p = new SPiece();
-        assertTrue(p.isCovering(0, 1));
-        assertTrue(p.isCovering(1, 1));
-        assertTrue(p.isCovering(1, 0));
-        assertTrue(p.isCovering(2, 0));
-
-        p = new ZPiece();
-        assertTrue(p.isCovering(0, 0));
-        assertTrue(p.isCovering(1, 0));
-        assertTrue(p.isCovering(1, 1));
-        assertTrue(p.isCovering(2, 1));
-
-        p = new TPiece();
-        assertTrue(p.isCovering(0, 1));
-        assertTrue(p.isCovering(1, 1));
-        assertTrue(p.isCovering(1, 0));
-        assertTrue(p.isCovering(2, 1));
+		assertFalse(p.isCovering(0, 0));
+		assertFalse(p.isCovering(0, 1));
+		assertFalse(p.isCovering(3, 0));
+		assertFalse(p.isCovering(3, 1));
+		for (int i = 0; i < 4; i++){
+			assertFalse(p.isCovering(i, 2));
+			assertFalse(p.isCovering(i, 3));
+        }
+		
+		p = new SPiece();
+		assertFalse(p.isCovering(0, 0));
+		assertFalse(p.isCovering(3, 0));
+		assertFalse(p.isCovering(2, 1));
+		assertFalse(p.isCovering(3, 1));
+		for (int i = 0; i < 4; i++){
+			assertFalse(p.isCovering(i, 2));
+			assertFalse(p.isCovering(i, 3));
+        }
+		
+		p = new ZPiece();
+		assertFalse(p.isCovering(0, 2));
+		assertFalse(p.isCovering(0, 3));
+		assertFalse(p.isCovering(0, 1));
+		assertFalse(p.isCovering(3, 1));
+		for (int i = 0; i < 4; i++){
+			assertFalse(p.isCovering(i, 2));
+			assertFalse(p.isCovering(i, 3));
+        }
+		
+		p = new TPiece();
+		assertFalse(p.isCovering(0, 0));
+		assertFalse(p.isCovering(0, 2));
+		assertFalse(p.isCovering(0, 3));
+		assertFalse(p.isCovering(3, 1));
+		for (int i = 0; i < 4; i++){
+			assertFalse(p.isCovering(i, 2));
+			assertFalse(p.isCovering(i, 3));
+        }
     }
 }
