@@ -72,10 +72,6 @@ public abstract class Piece {
         }
     }
 
-    public int getRotation(){
-        return pieceRotation;
-    }
-
     public void rotateRight( ) {
 		pieceRotation--;
         if ( pieceRotation < 0 ) {
