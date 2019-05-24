@@ -85,31 +85,53 @@ class PlayingFieldTest {
 
     @Test
     void moveLeft() {
+
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector());
+        int originalX = theField.getCurrentPiece().getX();
+        for (int i = 1; i <= 3; i++){
+            theField.nextMove(Move.moveLeft);
+            assertTrue(theField.getCurrentPiece().getX() == originalX - i);
+        }
     }
 
     @Test
     void moveRight() {
+
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector());
+        int originalX = theField.getCurrentPiece().getX();
+        for (int i = 1; i <= 3; i++){
+            theField.nextMove(Move.moveRight);
+            assertTrue(theField.getCurrentPiece().getX() == originalX + i);
+        }
     }
 
     @Test
     void A1PieceTest() {
-        String APIURL = "http://seng275.csc.uvic.ca:8080/tetris/games";
-        PlayingField pf = new PlayingField(new IPieceFactory(), new RESTAPIResultCollector("auth.txt", APIURL));
-        Piece p = new IPiece();
-        pf.nextMove(Move.rotateRight);
+
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector());
+        theField.nextMove(Move.rotateRight);
         for (int i = 0; i < 10; i++){
-            pf.nextMove(Move.moveLeft);
+            theField.nextMove(Move.moveLeft);
         }
-        assertTrue(pf.getCurrentPiece().getX() >= -1);
+        assertTrue(theField.getCurrentPiece().getX() >= 0);
     }
 
     @Test
     void A1ScoringTest() {
-        String APIURL = "http://seng275.csc.uvic.ca:8080/tetris/games";
-        PlayingField pf = new PlayingField(new RESTPieceFactory(APIURL), new RESTAPIResultCollector("auth.txt", APIURL));
-        for (int i = 0; i < 22; i++){
-            pf.nextMove(Move.moveDown);
+
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector());
+        for (int i = 0; i < 20; i++){
+            theField.nextMove(Move.moveDown);
         }
-        assertTrue(pf.getScore() > 0);
+        assertTrue(theField.getScore() == 20);
+        theField.timeout();
+        for (int i = 0; i < 10; i++){
+            theField.nextMove(Move.moveDown);
+        }
+        assertTrue(theField.getScore() == 30);
     }
 }
