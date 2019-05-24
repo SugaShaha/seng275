@@ -77,6 +77,16 @@ class PlayingFieldTest {
 
     @Test
     void rotateLeft() {
+
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector());
+        int originalRotation = theField.getCurrentPiece().getRotation();
+        for (int i = 1; i <= 4; i++){
+            theField.nextMove(Move.rotateLeft);
+            assertEquals(theField.getCurrentPiece().getRotation(),
+            originalRotation-i >= 0 ? (originalRotation-i) % 4 : originalRotation-i+4);
+        }
+
     }
 
     @Test
