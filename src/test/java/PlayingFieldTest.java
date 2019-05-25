@@ -39,7 +39,29 @@ class PlayingFieldTest {
 
     @Test
     void init() {
+        PieceFactory factory = new IJPieceFactory();
 
+        for (int x = 6; x < 16; x++){
+            for (int y = 6; y < 16; y++){
+                PlayingField theField = new PlayingField(factory, new NullResultCollector(), x, y);
+                for (int i = 0; i < x; i++){
+                    for (int j = 0; j < y; j++){
+                        if(i == 0 || i == 1 || i == (x - 3) || i == (x - 2) ||
+                        (i > 0 && i < (x-1)) && (j == (y - 3 ) || j == (y - 2))){
+                            assertTrue(theField.getContents(i, j) == Piece.PieceType.PIECE_OBSTACLE);
+                        }
+                        else{
+                            assertTrue(theField.getContents(i, j) == Piece.PieceType.PIECE_NONE);
+                        }
+                    }  
+                }
+                assertTrue(theField.getCurrentPiece() instanceof IPiece);
+                assertTrue(theField.getNextPiece() instanceof JPiece);
+                assertEquals(theField.getLineCount(), 0);
+                assertEquals(theField.getScore(), 0);
+                assertEquals(theField.getLevel(), 0);
+            }
+        }
     }
 
     @Test
@@ -76,11 +98,19 @@ class PlayingFieldTest {
 
     @Test
     void getContents() {
+<<<<<<< HEAD
         PieceFactory factory = new IPieceFactory();
         PlayingField theField = new PlayingField(factory, new NullResultCollector(), 16, 24);
         Piece.PieceType obp = Piece.PieceType.PIECE_OBSTACLE;
 
         assertTrue(theField.getContents(0,0) == obp);
+=======
+	    PieceFactory factory = new IPieceFactory();
+	    PlayingField theField = new PlayingField(factory, new NullResultCollector(), 16, 24);
+	    Piece.PieceType obp = Piece.PieceType.PIECE_OBSTACLE;
+	    
+	    assertTrue(theField.getContents(0,0) == obp);
+>>>>>>> 6842bcaa1864025eda551d89d14e16490eb87499
     }
 
     @Test
