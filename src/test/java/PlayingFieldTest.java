@@ -28,32 +28,18 @@ class PlayingFieldTest {
 
     @Test
     void getWidth() {
-<<<<<<< HEAD
         PieceFactory factory = new IPieceFactory();
         PlayingField theField = new PlayingField(factory, new NullResultCollector(), 10, 20);
-
-        assertEquals(theField.getWidth(), 10);
-=======
-	    PieceFactory factory = new IPieceFactory();
-	    PlayingField theField = new PlayingField(factory, new NullResultCollector(), 10, 20);
 	    
 	    assertEquals(theField.getWidth(), 10);
->>>>>>> b56b69ba11b44166185750dc97271f7128ce6227
     }
 
     @Test
     void getHeight() {
-<<<<<<< HEAD
         PieceFactory factory = new IPieceFactory();
         PlayingField theField = new PlayingField(factory, new NullResultCollector(), 10, 20);
-
-        assertEquals(theField.getHeight(), 20);
-=======
-	    PieceFactory factory = new IPieceFactory();
-	    PlayingField theField = new PlayingField(factory, new NullResultCollector(), 10, 20);
 	    
 	    assertEquals(theField.getHeight(), 20);
->>>>>>> b56b69ba11b44166185750dc97271f7128ce6227
     }
 
     @Test
@@ -75,7 +61,7 @@ class PlayingFieldTest {
     @Test
     void getContents() {
         PieceFactory factory = new IPieceFactory();
-        PlayingField theField = new PlayingField(factory, new NullResultCollector(), 10, 20);
+        PlayingField theField = new PlayingField(factory, new NullResultCollector(), 16, 24);
 
         Piece.PieceType obp = Piece.PieceType.PIECE_OBSTACLE;
         assertTrue(theField.getContents(0,0) == obp);
@@ -89,9 +75,6 @@ class PlayingFieldTest {
 
     @Test
     void nextMove() {
-
-<<<<<<< HEAD
-=======
         PieceFactory factory = new IPieceFactory();
         PlayingField theField = new PlayingField(factory, new NullResultCollector());
         int initialX = theField.getCurrentPiece().getX();
@@ -112,7 +95,6 @@ class PlayingFieldTest {
         for (int i = 0; i < 4; i++){
             assertTrue(theField.getCurrentPiece().isCovering(i, 1));
         }
->>>>>>> b56b69ba11b44166185750dc97271f7128ce6227
     }
 
     @Test
@@ -166,16 +148,13 @@ class PlayingFieldTest {
 
     @Test
     void moveLeft() {
-
+/*
         PieceFactory factory = new IPieceFactory();
         PlayingField theField = new PlayingField(factory, new NullResultCollector());
         int originalX = theField.getCurrentPiece().getX();
         for (int i = 1; i <= 3; i++){
-<<<<<<< HEAD
             theField.nextMove(Move.moveLeft);
-=======
             theField.moveLeft();
->>>>>>> b56b69ba11b44166185750dc97271f7128ce6227
             assertTrue(theField.getCurrentPiece().getX() == originalX - i);
         }
     }
@@ -187,13 +166,10 @@ class PlayingFieldTest {
         PlayingField theField = new PlayingField(factory, new NullResultCollector());
         int originalX = theField.getCurrentPiece().getX();
         for (int i = 1; i <= 3; i++){
-<<<<<<< HEAD
             theField.nextMove(Move.moveRight);
-=======
             theField.moveRight();
->>>>>>> b56b69ba11b44166185750dc97271f7128ce6227
             assertTrue(theField.getCurrentPiece().getX() == originalX + i);
-        }
+        }*/
     }
 
     @Test
