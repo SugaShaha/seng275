@@ -12,34 +12,33 @@ class PlayingFieldTest {
             return 0;
         }
     }
-	private class IJPieceFactory implements PieceFactory {
+    private class IJPieceFactory implements PieceFactory {
         private int count = 1;
-		
-		public Piece createPiece() {
-			if(count%2 == 0){
-				count++;
-				return new JPiece();
-			}
-			else{
-				count++;
-				return new IPiece();
-			}
-			
+
+        public Piece createPiece() {
+            if(count%2 == 0){
+                count++;
+                return new JPiece();
+            }
+            else{
+                count++;
+                return new IPiece();
+            }
+
         }
         public int   gameId() {
             return 0;
         }
     }
 
-	private class NullResultCollector implements ResultCollector {
-		public boolean submitGameResult (int gameId, int score, int lineCount) {
-			return true;
-		}
-	}
+    private class NullResultCollector implements ResultCollector {
+        public boolean submitGameResult (int gameId, int score, int lineCount) {
+            return true;
+        }
+    }
 
     @Test
     void init() {
-	    
         PieceFactory factory = new IJPieceFactory();
         for (int x = 6; x < 16; x++){
             for (int y = 6; y < 16; y++){
@@ -66,18 +65,18 @@ class PlayingFieldTest {
 
     @Test
     void getWidth() {
-	    PieceFactory factory = new IPieceFactory();
-	    PlayingField theField = new PlayingField(factory, new NullResultCollector(), 10, 20);
-	    
-	    assertEquals(theField.getWidth(), 10);
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector(), 10, 20);
+
+        assertEquals(theField.getWidth(), 10);
     }
 
     @Test
     void getHeight() {
-	    PieceFactory factory = new IPieceFactory();
-	    PlayingField theField = new PlayingField(factory, new NullResultCollector(), 10, 20);
-	    
-	    assertEquals(theField.getHeight(), 20);
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector(), 10, 20);
+
+        assertEquals(theField.getHeight(), 20);
     }
 
     @Test
@@ -98,11 +97,19 @@ class PlayingFieldTest {
 
     @Test
     void getContents() {
+<<<<<<< HEAD
+        PieceFactory factory = new IPieceFactory();
+        PlayingField theField = new PlayingField(factory, new NullResultCollector(), 16, 24);
+        Piece.PieceType obp = Piece.PieceType.PIECE_OBSTACLE;
+
+        assertTrue(theField.getContents(0,0) == obp);
+=======
 	    PieceFactory factory = new IPieceFactory();
 	    PlayingField theField = new PlayingField(factory, new NullResultCollector(), 16, 24);
 	    Piece.PieceType obp = Piece.PieceType.PIECE_OBSTACLE;
 	    
 	    assertTrue(theField.getContents(0,0) == obp);
+>>>>>>> 6842bcaa1864025eda551d89d14e16490eb87499
     }
 
     @Test
@@ -156,21 +163,21 @@ class PlayingFieldTest {
 
     @Test
     void timeout() {
-		PieceFactory factory = new IJPieceFactory();
+        PieceFactory factory = new IJPieceFactory();
         PlayingField theField = new PlayingField(factory, new NullResultCollector());
-		
-		for(int i = 1; i<=20; i++){
-			theField.moveDown();
-		}
-		assertTrue(theField.getNextPiece() instanceof JPiece);
-		
-		for(int i = 1; i < 20; i++){
-			for(int j = 1; j <= 20; j++){
-				theField.moveDown();
-			}
-			theField.timeout();
-		}
-		assertTrue(theField.timeout());
+
+        for(int i = 1; i<=20; i++){
+            theField.moveDown();
+        }
+        assertTrue(theField.getNextPiece() instanceof JPiece);
+
+        for(int i = 1; i < 20; i++){
+            for(int j = 1; j <= 20; j++){
+                theField.moveDown();
+            }
+            theField.timeout();
+        }
+        assertTrue(theField.timeout());
     }
 
     @Test
@@ -185,7 +192,7 @@ class PlayingFieldTest {
             assertEquals(initialY+i, theField.getCurrentPiece().getY());
         }
         theField.moveDown();
-            assertEquals(initialY+20, theField.getCurrentPiece().getY());
+        assertEquals(initialY+20, theField.getCurrentPiece().getY());
     }
 
     @Test
