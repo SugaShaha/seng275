@@ -97,19 +97,11 @@ class PlayingFieldTest {
 
     @Test
     void getContents() {
-<<<<<<< HEAD
-        PieceFactory factory = new IPieceFactory();
-        PlayingField theField = new PlayingField(factory, new NullResultCollector(), 16, 24);
-        Piece.PieceType obp = Piece.PieceType.PIECE_OBSTACLE;
-
-        assertTrue(theField.getContents(0,0) == obp);
-=======
 	    PieceFactory factory = new IPieceFactory();
 	    PlayingField theField = new PlayingField(factory, new NullResultCollector(), 16, 24);
 	    Piece.PieceType obp = Piece.PieceType.PIECE_OBSTACLE;
 	    
 	    assertTrue(theField.getContents(0,0) == obp);
->>>>>>> 6842bcaa1864025eda551d89d14e16490eb87499
     }
 
     @Test
