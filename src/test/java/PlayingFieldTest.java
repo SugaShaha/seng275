@@ -41,7 +41,6 @@ class PlayingFieldTest {
     void init() {
 	    
         PieceFactory factory = new IJPieceFactory();
-
         for (int x = 6; x < 16; x++){
             for (int y = 6; y < 16; y++){
                 PlayingField theField = new PlayingField(factory, new NullResultCollector(), x, y);

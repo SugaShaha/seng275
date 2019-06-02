@@ -5,12 +5,32 @@ V00894734, Victor Sun
 
 1: The unit tests for moveRight, moveLeft, moveUp and moveDown only use a single piece type: IPiece. Given that there are six other pieces, are the existing tests sufficient?  Why or why not?
 
-The tests are sufficient because the stated functions only involve translation of the pieces and therefore the shape and rotation of the pieces are not relevant, as the shape and rotation are maintained for all of the pieces.
+	The tests are sufficient because the stated functions only involve translation of the pieces and therefore the shape and rotation of the pieces are not relevant, as the shape and rotation are maintained for all of the pieces.
 
 2: Decide if you are going to test all seven pieces in rotateRight, rotateLeft and isCovering.  Document the reasons for your decisions, including the risks of the approach you took.
 
-For rotateLeft we tested all 7 pieces because they each have a unique geometry that could lead to a new defect; such as the I-piece clipping through the wall or the O-piece's rotation value not actually changing.
-For rotateRight, we only tested the I-Piece since we figured that every asymmetric piece has a "mirrored" version and we believe that we would have found a defect in the mirrored version during the rotateLeft tests.
-For isCovering, we tested all 7 pieces because they each have a unique geometry and we needed to verify that each shape covered the right coordinates.
+	For rotateLeft we tested all 7 pieces because they each have a unique geometry that could lead to an undiscovered defect; such as the I-piece clipping through the wall or the O-piece's rotation value changing when it shouldn't.
 
-3: 
+	For rotateRight, we only tested the I-Piece since we figured that every asymmetric piece has a "mirrored" version (i.e. S and Z, L and J) and we believe that we would have found a defect in the mirrored version during the rotateLeft tests.
+
+	For isCovering, we tested all 7 pieces because they each have a unique geometry and we needed to verify that each shape covered the correct coordinates.
+
+3: Document how the tests you add to PlayingField.java will meet the CEO's requirements.
+
+	The CEO's requirement "be certain that pieces cannot be moved outside the playing field" is enforced directly by A1PieceTest test in PieceTest.java as it replicates the bug in the original version but not the updated version.
+
+	The CEO's requirement "be certain that scoring follows the documented guidelines" is enforced directly by the moveDown test in PlayingFieldTest.java that verifies that points are added when the player forces a piece downwards, and the A1ScoringTest test in PlayingFieldTest.java that ensures that the scoring bug that was in the original version provided to us is fixed.
+
+	More generally, the CEO wanted the automated testing to be improved. As a result, we filled in every empty testing method in PlayingFieldTest.java. These methods were: init, getWidth, getHeight, getCurrentPiece, getNextPiece, getContents, getLineCount, nextMove, timeout, rotateLeft, rotateRight and moveLeft. Most of these methods tested methods that were used in the A1PieceTest and A1ScoringTest.
+
+4: Discuss how you would have to change your tests if the PlayingField's size was changed to be, say, two units wider.
+
+	The tests that check for passing through the wall and involve creating a full line at the bottom would need to be altered, as creating a line with pieces would require a different set of moves. As of now, our tests would not be able to handle these changes in the game, which is definitely something to note.
+
+5: Discuss the limitations of the UI recording as described in this assignment. In particular, what kind of tests would not be possible to generate using this method?
+
+	The main limitation in UI recording is that the tester must follow an exact sequence of steps in the realtime simulation of the game. Many defects are very hard to reproduce in real-time, and may take many, many trials. For example, a human tester who is not very good at tetris may have a hard time clearing 4 lines at once in the actual game. It may take several tries and possibly a long log of commands before he clears 4 lines simultaneously. Any case that is hard to replicate in-game is not a good candidate for testing via UI recording and should be considered for automated testing (or editing the environment to make the test easier).
+
+6: If you cannot create unit tests that cover all the "CEO requirements", document what is missing and what approach you would recommend to address the shortcomings of your unit tests.
+
+	We believe we have documented all necessary unit tests. However, some helper methods such as getRotation would allow us to test the rotation of the pieces much more easily in PieceTest.java. I would create thorough get and set methods in each class that would make testing and grabbing specific information during testing much easier.
